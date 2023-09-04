@@ -70,12 +70,15 @@ fun LoginScreen(navController:NavHostController) {
                 .fillMaxWidth()
                 .padding(8.dp)
         )
+        Spacer(modifier = Modifier.height(20.dp))
+
         Button(onClick = {
                          navController.navigate(ROUTE_REGISTER)
         }, modifier = Modifier.fillMaxWidth()) {
-            Text(text = "Don't have account?Click here to Register")
+            Text(text = "Don't have account? Click here to Register.")
         }
         Spacer(modifier = Modifier.height(20.dp))
+
 
 
 
