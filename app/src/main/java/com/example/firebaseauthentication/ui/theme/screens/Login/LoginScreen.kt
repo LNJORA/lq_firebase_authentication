@@ -79,7 +79,7 @@ fun LoginScreen(navController:NavHostController) {
             val mylogin=AuthViewModel(navController,context)
             mylogin.login(email.text.trim(),pass.text.trim())
         }, modifier = Modifier.fillMaxWidth()) {
-            Text(text = "Don't have account? Click here to Register.")
+            Text(text = "Click here to Login.")
         }
 
         Spacer(modifier = Modifier.height(20.dp))

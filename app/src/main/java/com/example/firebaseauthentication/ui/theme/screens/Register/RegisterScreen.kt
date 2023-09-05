@@ -75,6 +75,16 @@ fun RegisterScreen(navController:NavHostController) {
                 .fillMaxWidth()
                 .padding(8.dp)
         )
+        Spacer(modifier = Modifier.height(20.dp))
+
+        OutlinedTextField(value = confirmpass, onValueChange = { confirmpass = it },
+            label = { Text(text = "Confirm password") },
+
+            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+        )
         Button(
             onClick = {
                 val myregister=AuthViewModel(navController,context)
