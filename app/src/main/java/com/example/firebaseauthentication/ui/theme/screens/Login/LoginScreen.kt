@@ -20,6 +20,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
@@ -28,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.firebaseauthentication.data.AuthViewModel
 import com.example.firebaseauthentication.navigation.ROUTE_REGISTER
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -35,6 +37,7 @@ import com.example.firebaseauthentication.navigation.ROUTE_REGISTER
 fun LoginScreen(navController:NavHostController) {
     var email by remember { mutableStateOf(TextFieldValue("")) }
     var pass by remember { mutableStateOf(TextFieldValue("")) }
+    var context= LocalContext.current
 
     Column(
         modifier = Modifier
@@ -73,11 +76,22 @@ fun LoginScreen(navController:NavHostController) {
         Spacer(modifier = Modifier.height(20.dp))
 
         Button(onClick = {
+            val mylogin=AuthViewModel(navController,context)
+            mylogin.login(email.text.trim(),pass.text.trim())
+        }, modifier = Modifier.fillMaxWidth()) {
+            Text(text = "Don't have account? Click here to Register.")
+        }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        Button(onClick = {
                          navController.navigate(ROUTE_REGISTER)
         }, modifier = Modifier.fillMaxWidth()) {
             Text(text = "Don't have account? Click here to Register.")
         }
         Spacer(modifier = Modifier.height(20.dp))
+
+
 
 
 
